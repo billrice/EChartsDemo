@@ -486,7 +486,12 @@
                       coordinateSystem: 'geo',
                       data: convertData(randomData(originalData, 10)),
                       symbolSize: function (val) {
-                          return val[2] / 10;
+                          return val[2] / 20;
+                      },
+                      rippleEffect: {
+                        period: 4,
+                        scale: 5,
+                        brushType: 'fill'
                       },
                       label: {
                           normal: {
