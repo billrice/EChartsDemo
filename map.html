@@ -402,19 +402,21 @@
                '大庆':[125.03,46.58]
            };
 
-           var convertData = function (data) {
-               var res = [];
-               for (var i = 0; i < data.length; i++) {
-                   var geoCoord = geoCoordMap[data[i].name];
-                   if (geoCoord) {
-                       res.push({
-                           name: data[i].name,
-                           value: geoCoord.concat(data[i].value)
-                       });
-                   }
-               }
-               return res;
-           };
+          var convertData = function (data) {
+              var res = [];
+              for (var i = 0; i < data.length; i++) {
+                var geoCoord = geoCoordMap[data[i].name];
+                if (geoCoord) {
+                    var randomValue = parseInt(Math.random()*(100 - 20 + 1) + 20, 10);
+                    res.push({
+                       name: data[i].name,
+                       //value: geoCoord.concat(data[i].value)
+                       value: geoCoord.concat(randomValue)
+                    });
+                }
+              }
+              return res;
+          };
 
           var randomData = function (data, count) {
               var totalLength = data.length;
@@ -445,7 +447,12 @@
                aria: {
                    show: true
                },
-               tooltip: {},
+               tooltip: {
+                   formatter: function (params, ticket, callback) {
+                      console.log(params, ticket, callback);
+                      return params.seriesName + '<br />' + params.name + ': ' + params.value[2];
+                   }
+               },
                geo: {
                    map: 'china',
                    roam: true,
@@ -474,7 +481,7 @@
                },
                series : [
                   {
-                      name: 'pm2.5',
+                      name: '出货量',
                       type: 'effectScatter',
                       coordinateSystem: 'geo',
                       data: convertData(randomData(originalData, 10)),
@@ -493,7 +500,7 @@
                       },
                       itemStyle: {
                           normal: {
-                              color: '#ddb926'
+                              color: '#19A094'
                           }
                       }
                    }
