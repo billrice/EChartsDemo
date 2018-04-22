@@ -407,7 +407,7 @@
               for (var i = 0; i < data.length; i++) {
                 var geoCoord = geoCoordMap[data[i].name];
                 if (geoCoord) {
-                    var randomValue = parseInt(Math.random()*(100 - 20 + 1) + 20, 10);
+                    var randomValue = parseInt(Math.random()*(120 - 20 + 1) + 60, 10);
                     res.push({
                        name: data[i].name,
                        //value: geoCoord.concat(data[i].value)
@@ -490,8 +490,8 @@
                       },
                       rippleEffect: {
                         period: 4,
-                        scale: 5,
-                        brushType: 'fill'
+                        scale: 7,
+                        brushType: 'stroke'
                       },
                       label: {
                           normal: {
@@ -505,7 +505,7 @@
                       },
                       itemStyle: {
                           normal: {
-                              color: '#19A094'
+                              color: '#3F51B5'
                           }
                       }
                    }
@@ -530,10 +530,10 @@
                   }]
               });
 
-              setTimeout(refreshData, 5000);
+              setTimeout(refreshData, 10000);
           };
 
-          setTimeout(refreshData, 5000);
+          setTimeout(refreshData, 10000);
         </script>
     </body>
 </html>
